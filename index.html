@@ -1809,8 +1809,8 @@
 .gp-hint2{position:absolute;bottom:22px;left:0;right:0;text-align:center;font-size:.76rem;color:#66708a;opacity:0;transition:opacity .5s}
 .gp-stage[data-active="1"] .gp-hint2{opacity:.9}
 .gp-stage[data-active="1"] .gp-globe-stage{transform:translateY(52%) scale(1)}
-.gp-stage[data-active="2"] .gp-globe-stage{transform:translateY(4%) scale(1)}
-.gp-stage[data-active="3"] .gp-globe-stage{transform:translateX(26%) scale(.82)}
+.gp-stage[data-active="2"] .gp-globe-stage{transform:translateY(0) scale(.72)}
+.gp-stage[data-active="3"] .gp-globe-stage{transform:translateX(27%) scale(.72)}
 .gp-stage[data-active="1"] .gp-p1,.gp-stage[data-active="2"] .gp-p2,.gp-stage[data-active="3"] .gp-p3{opacity:1;transform:none}
 .gp-trig{height:100vh}
 @media(max-width:920px){.gp-stage{position:static;height:auto;min-height:0;display:block;overflow:visible;padding:10px 0}.gp-globe-stage{position:static;transform:none!important;margin:0 auto 16px}#gp-globe{width:min(82vw,360px);height:min(82vw,360px)}.gp-overlay{height:auto}.gp-panel{position:static;left:auto;right:auto;opacity:1;transform:none;pointer-events:auto;padding:14px 0}.gp-p3{align-items:stretch}.gp-ex{max-width:none}.gp-trig{display:none}.gp-stats{grid-template-columns:repeat(2,1fr)}.gp-hint2{position:static;opacity:.9;margin-top:8px}}
@@ -2487,8 +2487,7 @@ var gel=document.getElementById("gp-globe");if(gel){if("IntersectionObserver" in
 // count-up
 function runCount(){var box=document.getElementById("gp-stats");if(!box||box.dataset.done)return;box.dataset.done="1";box.querySelectorAll(".gp-num").forEach(function(el){var to=+el.dataset.to,suf=el.dataset.suffix||"",t0=null;function st(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/1300,1);el.textContent=Math.floor((1-Math.pow(1-p,3))*to).toLocaleString("en-US")+(p>=1?suf:"");if(p<1)requestAnimationFrame(st);}requestAnimationFrame(st);});}
 // triggers -> active step
-var stage=document.querySelector(".gp-stage");
-if(stage&&"IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var stp=e.target.dataset.step;stage.dataset.active=stp;if(stp==="2")runCount();if(G){try{G.htmlElementsData(stp==="3"?offices:[]);}catch(e){}}}});},{rootMargin:"-50% 0px -50% 0px"});document.querySelectorAll(".gp-trig").forEach(function(t){io.observe(t);});}
+var stage=document.querySelector(".gp-stage");var gpsec=document.querySelector(".gp-scroll2");function gpStep(){if(!stage||!gpsec)return;var r=gpsec.getBoundingClientRect();var vh=window.innerHeight;var scrolled=-r.top;var stp;if(scrolled<vh){stp="1";}else if(scrolled<vh*2){stp="2";}else{stp="3";}if(stage.dataset.active!==stp){stage.dataset.active=stp;if(stp==="2")runCount();if(G){try{G.htmlElementsData(stp==="3"?offices:[]);}catch(e){}}}}window.addEventListener("scroll",gpStep,{passive:true});window.addEventListener("resize",gpStep);gpStep();
 // filtre oficines
 var fil=document.getElementById("gp-filter");if(fil){fil.addEventListener("click",function(e){var b=e.target.closest(".gp-f");if(!b)return;fil.querySelectorAll(".gp-f").forEach(function(x){x.classList.remove("active");});b.classList.add("active");var r=b.dataset.region;document.querySelectorAll("#gp-list li").forEach(function(li){li.classList.toggle("hide",r!=="all"&&li.dataset.region!==r);});});}
 })();
