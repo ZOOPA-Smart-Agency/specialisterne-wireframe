@@ -1778,7 +1778,7 @@
 .gp-sec2{background:#f4f6fc}
 .gp-scroll2{position:relative}
 .gp-stage{position:sticky;top:0;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.gp-globe-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:transform .9s cubic-bezier(.45,0,.2,1);will-change:transform}
+.gp-globe-stage{position:absolute;inset:86px 0 24px 0;display:flex;align-items:center;justify-content:center;transition:transform .9s cubic-bezier(.45,0,.2,1);will-change:transform}
 #gp-globe{width:min(90vh,96vw);height:min(90vh,96vw);cursor:grab}
 #gp-globe:active{cursor:grabbing}
 #gp-globe canvas{outline:none}
@@ -1809,8 +1809,8 @@
 .gp-hint2{position:absolute;bottom:22px;left:0;right:0;text-align:center;font-size:.76rem;color:#66708a;opacity:0;transition:opacity .5s}
 .gp-stage[data-active="1"] .gp-hint2{opacity:.9}
 .gp-stage[data-active="1"] .gp-globe-stage{transform:translateY(46%) scale(2.2)}
-.gp-stage[data-active="2"] .gp-globe-stage{transform:translateY(0) scale(1)}
-.gp-stage[data-active="3"] .gp-globe-stage{transform:translateX(24%) scale(1.12)}
+.gp-stage[data-active="2"] .gp-globe-stage{transform:translateY(0) scale(.9)}
+.gp-stage[data-active="3"] .gp-globe-stage{transform:translateX(22%) scale(1)}
 .gp-stage[data-active="1"] .gp-p1,.gp-stage[data-active="2"] .gp-p2,.gp-stage[data-active="3"] .gp-p3{opacity:1;transform:none}
 .gp-trig{height:100vh}
 @media(max-width:920px){.gp-stage{position:static;height:auto;min-height:0;display:block;overflow:visible;padding:10px 0}.gp-globe-stage{position:static;transform:none!important;margin:0 auto 16px}#gp-globe{width:min(82vw,360px);height:min(82vw,360px)}.gp-overlay{height:auto}.gp-panel{position:static;left:auto;right:auto;opacity:1;transform:none;pointer-events:auto;padding:14px 0}.gp-p3{align-items:stretch}.gp-ex{max-width:none}.gp-trig{display:none}.gp-stats{grid-template-columns:repeat(2,1fr)}.gp-hint2{position:static;opacity:.9;margin-top:8px}}
@@ -1966,41 +1966,27 @@
     </div>
   </div>
 
-  <div class="kh-tabs-wrap"><div class="wrap"><div class="kh-tabs" id="blog-tabs">
-    <a class="active" onclick="blogTab(this,'News')">NEWS</a>
-    <a class="dead">ARTICLES</a>
-    <a class="dead">RESOURCES AND INSIGHTS</a>
+  <div class="kh-tabs-wrap"><div class="wrap"><style>
+.blog-panel[hidden]{display:none}
+.kh-collections{margin-top:46px}
+.kh-coll-h{color:var(--indigo);font-size:clamp(1.4rem,3vw,1.8rem);font-weight:800;margin:0 0 22px}
+.kh-coll{margin-bottom:34px}
+.kh-coll h3{color:var(--indigo);font-size:1.15rem;font-weight:800;margin:0 0 14px}
+.kh-coll-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.kh-coll-item{display:block;padding:16px 18px;border:1px solid var(--line);border-radius:10px;background:#fff;color:#002B64;font-weight:600;text-decoration:none;cursor:pointer;transition:.15s;font-size:.92rem}
+.kh-coll-item:hover{border-color:#002B64;box-shadow:0 4px 12px rgba(0,43,100,.08)}
+@media(max-width:760px){.kh-coll-grid{grid-template-columns:1fr}}
+</style>
+<div class="kh-tabs-wrap"><div class="wrap"><div class="kh-tabs" id="blog-tabs">
+    <a class="active" onclick="blogTab(this,'news')">NEWS</a>
+    <a onclick="blogTab(this,'articles')">ARTICLES</a>
+    <a onclick="blogTab(this,'resources')">RESOURCES AND INSIGHTS</a>
   </div></div></div>
 
   <section><div class="wrap">
-    <!-- NEWS panel -->
     <div id="blog-news" class="blog-panel">
-      <div class="kh-events">
-        <div class="kh-ev-head">
-          <span class="kh-ev-title">NEWS</span>
-        </div>
-        <div class="kh-ev-grid">
-          <div class="kh-card"><img src="assets/card-1.jpg" alt=""><div class="bd"><div class="date">04.10.2025</div><p class="ttl">Neurodiversity Article Title</p><span class="more">Learn more</span></div></div>
-          <div class="kh-card"><img src="assets/card-2.jpg" alt=""><div class="bd"><div class="date">04.10.2025</div><p class="ttl">Neurodiversity Article Title</p><span class="more">Learn more</span></div></div>
-          <div class="kh-card"><img src="assets/card-3.jpg" alt=""><div class="bd"><div class="date">04.10.2025</div><p class="ttl">Neurodiversity Article Title</p><span class="more">Learn more</span></div></div>
-        </div>
-        <div class="kh-ev-nav"><span class="prev">&#8592;</span><span class="next">&#8594;</span></div>
-      </div>
-
-      <div class="kh-events">
-        <div class="kh-ev-head">
-          <span class="kh-ev-title">EVENTS</span>
-          <button class="kh-month">NOVEMBER <span>&#8595;</span></button>
-        </div>
-        <div class="kh-ev-grid">
-          <div class="kh-card"><img src="assets/card-4.jpg" alt=""><div class="bd"><div class="date">04.10.2025</div><p class="ttl">Neurodiversity Article Title</p><span class="more">Learn more</span></div></div>
-          <div class="kh-card"><img src="assets/card-5.jpg" alt=""><div class="bd"><div class="date">04.10.2025</div><p class="ttl">Neurodiversity Article Title</p><span class="more">Learn more</span></div></div>
-          <div class="kh-card"><img src="assets/card-6.jpg" alt=""><div class="bd"><div class="date">04.10.2025</div><p class="ttl">Neurodiversity Article Title</p><span class="more">Learn more</span></div></div>
-        </div>
-        <div class="kh-ev-nav"><span class="prev">&#8592;</span><span class="next">&#8594;</span></div>
-      </div>
-
-      <div class="kh-reco">
+  <div class="kh-events"><div class="kh-ev-head"><span class="kh-ev-title">NEWS</span></div><div class="kh-ev-grid"><div class="kh-card"><img src="assets/card-1.jpg" alt=""><div class="bd"><p class="ttl">Specialisterne España renueva su certificación como Empresa B hasta 2029</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-2.jpg" alt=""><div class="bd"><p class="ttl">Specialisterne Named to the Forbes Accessibility 200: Cognitive Accessibility as a Driver of Global Innovation</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-3.jpg" alt=""><div class="bd"><p class="ttl">Specialisterne named in Forbes Accessibility 100: making accessibility a driver for innovation</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-4.jpg" alt=""><div class="bd"><p class="ttl">Casa Batlló celebrates four years of breaking stereotypes in the workplace inclusion of neurodivergent people</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-5.jpg" alt=""><div class="bd"><p class="ttl">Press Release: The Hg Foundation partners with Specialisterne USA to support unemployed neurodivergent adults to train for and secure jobs in Tech</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-6.jpg" alt=""><div class="bd"><p class="ttl">Casa Batlló celebra en Bruselas el Premio Europeo de Patrimonio / Premio Europa Nostra 2025 por su compromiso con la neurodiversidad</p><span class="more">Read more</span></div></div></div></div>
+  <div class="kh-reco">
         <div class="kh-reco-top">
           <h2>Recognitions</h2>
           <div class="txt">
@@ -2018,7 +2004,14 @@
         </div>
         <div style="margin-top:30px"><a role="button" class="link-more" onclick="go('recognitions')" aria-label="View all recognitions and awards">View more</a></div>
       </div>
-    </div>
+</div>
+<div id="blog-articles" class="blog-panel" hidden>
+  <div class="kh-events"><div class="kh-ev-head"><span class="kh-ev-title">ARTICLES</span></div><div class="kh-ev-grid"><div class="kh-card"><img src="assets/card-1.jpg" alt=""><div class="bd"><p class="ttl">Five Years of Experience Is Not a Skill</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-2.jpg" alt=""><div class="bd"><p class="ttl">Inclusion Must Go Beyond Conversation and Become Central to Companies’ Value Strategies</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-3.jpg" alt=""><div class="bd"><p class="ttl">Accessible Content is Not Simple Content</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-4.jpg" alt=""><div class="bd"><p class="ttl">No One Compliments Accessible Design. That’s the Point.</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-5.jpg" alt=""><div class="bd"><p class="ttl">Understanding Generational Context in Neurodiverse Workforces</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-6.jpg" alt=""><div class="bd"><p class="ttl">Mirroring: Connection, Camouflage, and What Inclusive Communication Really Requires</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-1.jpg" alt=""><div class="bd"><p class="ttl">What do we talk about when we talk about disability?</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-2.jpg" alt=""><div class="bd"><p class="ttl">Accessibility Is a Roadmap With People at the Center</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-3.jpg" alt=""><div class="bd"><p class="ttl">Ensuring Selection Validity: Removing a Barrier to Neuroinclusive Hiring</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-4.jpg" alt=""><div class="bd"><p class="ttl">Disability Pride Isn’t Just Personal. It’s Professional Too.</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-5.jpg" alt=""><div class="bd"><p class="ttl">LGBTQIA+ and Autistic Pride Within the Power of Intersectionality</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-6.jpg" alt=""><div class="bd"><p class="ttl">Breaking Myths About Autism</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-1.jpg" alt=""><div class="bd"><p class="ttl">Neurodivergent Strengths in Leadership: A Must for Facing Complex Challenges</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-2.jpg" alt=""><div class="bd"><p class="ttl">Bridging the Talent Gap: Specialisterne’s Global Approach to Training</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-3.jpg" alt=""><div class="bd"><p class="ttl">The Importance of Inclusive Education and Vocational Guidance for Neurodivergent Jobseekers</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-4.jpg" alt=""><div class="bd"><p class="ttl">Beyond Words: Disability Inclusion and Communication Differences</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-5.jpg" alt=""><div class="bd"><p class="ttl">Valuing Diversity, Equity, and Neuroinclusion as a Strategic Action</p><span class="more">Read more</span></div></div></div></div>
+</div>
+<div id="blog-resources" class="blog-panel" hidden>
+  <div class="kh-events"><div class="kh-ev-head"><span class="kh-ev-title">RESOURCES</span></div><div class="kh-ev-grid"><div class="kh-card"><img src="assets/card-1.jpg" alt=""><div class="bd"><p class="ttl">Social Impact Report 2025: Transforming Society By Creating Pathways For Neurodivergent People To Access and Thrive At Work</p><span class="more">Read more</span></div></div><div class="kh-card"><img src="assets/card-2.jpg" alt=""><div class="bd"><p class="ttl">White Paper: Supporting Neurodivergent Employees to Thrive</p><span class="more">Read more</span></div></div></div></div>
+  <div class="kh-collections"><h2 class="kh-coll-h">Insights &amp; collections</h2><div class="kh-coll"><h3>Inclusive checklist</h3><div class="kh-coll-grid"><a class="kh-coll-item">Inclusive job posting</a><a class="kh-coll-item">Inclusive seasonal planning</a><a class="kh-coll-item">Inclusive hiring process</a><a class="kh-coll-item">Inclusive onboarding</a><a class="kh-coll-item">Inclusive team communication</a></div></div><div class="kh-coll"><h3>Best practices &amp; accommodations</h3><div class="kh-coll-grid"><a class="kh-coll-item">Most meetings are designed for one communication style</a><a class="kh-coll-item">Not everyone experiences summer at work the same way</a><a class="kh-coll-item">Feedback works better when it is specific</a><a class="kh-coll-item">Digital tools should protect your focus</a><a class="kh-coll-item">Good ideas do not always arrive out loud</a></div></div>  </div>
+</div>
   </div></section>
 </section>
 
@@ -2495,5 +2488,6 @@ var fil=document.getElementById("gp-filter");if(fil){fil.addEventListener("click
 
 
 
+<script>function blogTab(el,id){document.querySelectorAll("#blog-tabs a").forEach(function(a){a.classList.remove("active");});el.classList.add("active");document.querySelectorAll(".blog-panel").forEach(function(p){p.hidden=(p.id!=="blog-"+id);});}</script>
 </body>
 </html>
